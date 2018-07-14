@@ -1,0 +1,70 @@
+<!--
+  Generated template for the AdminUser page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Admin User</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addUser()">
+    <ion-icon name="person-add"></ion-icon>
+  </button> 
+  </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+    <ion-item>
+      <h2>User Details</h2>
+      <ion-list>
+      <ion-item *ngFor="let Users of Users | async" (click)="showOptions(Users.$key,Users.Name,Users.Email,Users.Password,Users.Type)">
+      <h6>User Details</h6>
+      <h4>{{Users.$key}}</h4>
+      <p>Name-{{Users.Name}}</p>
+      <p>Email-{{Users.Email}}</p>
+      <p>Password-{{Users.Password}}</p>
+      <p>Type-{{Users.Type}}</p>
+      </ion-item>
+      </ion-list>
+    </ion-item>
+
+<ion-fab bottom center>
+<button ion-fab>Search</button>
+<ion-fab-list side="top">
+
+<!-- Search Name--> 
+<ion-item>
+  <ion-label>Email</ion-label>
+    <ion-input type="text"   [(ngModel)]="Email" (input)="pickEmail(Email)"></ion-input>
+</ion-item>
+
+<!-- Search Name--> 
+<ion-item>
+  <ion-label>Name</ion-label>
+    <ion-input type="text" [(ngModel)]="Name" (input)="pickName(Name)"></ion-input>    
+</ion-item>
+
+<!-- Search Type -->
+<ion-item>
+  <ion-label>Type</ion-label>
+    <ion-select [(ngModel)]="Type" (ionChange)="pickType(Type)">
+      <ion-option value="0">Admin</ion-option>
+      <ion-option value="1">User</ion-option>
+      <ion-option value="2">Owner</ion-option>
+    </ion-select>
+</ion-item>
+
+<!-- All Values -->
+<button ion-button block (click)="pickAll()">All Slots</button>
+
+</ion-fab-list>
+</ion-fab>
+
+</ion-content>

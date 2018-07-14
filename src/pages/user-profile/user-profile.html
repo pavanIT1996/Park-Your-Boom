@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>User-Profile</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="form1">
+    <ion-list>
+      <img src="assets/guest-256.png" class="center" width="150" height="150">
+      <img src="{{pathForImage(lastImage)}}" style="width: 100%" [hidden]="lastImage === null">
+      <h6 [hidden]="lastImage !== null"></h6>
+      <ion-toolbar color="secondary">
+        <ion-buttons>
+          <button ion-button icon-left (click)="presentActionSheet()">
+            <ion-icon name="camera"></ion-icon>Select Image
+          </button>
+        </ion-buttons>
+        <ion-buttons>
+          <button ion-button icon-left (click)="uploadimage()" [disabled]="lastImage === null">
+            <ion-icon name="cloud-upload"></ion-icon>Upload
+          </button>
+        </ion-buttons>
+      </ion-toolbar>
+
+
+      <ion-item>
+        <ion-input [(ngModel)]="Fname" type="text" placeholder="Full Name" pattern="[ a-z|A-Z ]{1,30}" formControlName="Fname" [class.invalid]="!form1.controls.Fname.valid && form1.controls.Fname.dirty"></ion-input>
+      </ion-item>
+
+      <p *ngIf="!form1.controls.Fname.valid && form1.controls.Fname.dirty">Please Enter the Full Name</p>
+
+      <ion-item>
+        <ion-input [(ngModel)]="Nic" type="text" placeholder="NIC" pattern="[0-9|V|v|x|X]{1,10}" maxlength="10" formControlName="NIC"
+          [class.invalid]="!form1.controls.NIC.valid && form1.controls.NIC.dirty"></ion-input>
+      </ion-item>
+
+
+      <p *ngIf="!form1.controls.NIC.valid && form1.controls.NIC.dirty">Please Enter the NIC</p>
+
+      <ion-item>
+        <ion-input [(ngModel)]="Mobile" type="tel" placeholder="Mobile" pattern="[0-9]{1,10}" maxlength="10" formControlName="Mobile"
+          [class.invalid]="!form1.controls.Mobile.valid && form1.controls.Mobile.dirty"></ion-input>
+      </ion-item>
+
+
+      <p *ngIf="!form1.controls.Mobile.valid && form1.controls.Mobile.dirty">Please Enter the Mobile</p>
+
+      <ion-item>
+        <ion-input [(ngModel)]="Email" type="email" placeholder="Email" formControlName="email" [class.invalid]="!form1.controls.email.valid && form1.controls.email.dirty"></ion-input>
+      </ion-item>
+
+      <p *ngIf="!form1.controls.email.valid && form1.controls.email.dirty">Please Enter the Valid Email</p>
+
+    </ion-list>
+  </form>
+
+  <button ion-button block (click)="addContact(Fname,Nic,Mobile,Email)"> Submit </button>
+
+  <!-- <form [formGroup] = "addpro">
+<ion-list>
+      <img src="assets/guest-256.png" class="center"  width="150" height="150" >
+  <ion-item>
+    <ion-input [(ngModel)]="Fname" type="text" placeholder="Full Name" formControlName="Fname" required ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input [(ngModel)]="Nic" type="text" placeholder="NIC" formControlName="Nic" required></ion-input>
+  </ion-item>
+
+    <ion-item>
+    <ion-input [(ngModel)]="Mobile" type="tel" placeholder="Mobile" formControlName="Mobile" required></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input [(ngModel)]="Email" type="email" placeholder="Email" formControlName="Email" required></ion-input>
+  </ion-item>
+
+</ion-list>
+
+<button ion-button block (click) ="addContact(Fname,Nic,Mobile,Email)"> Submit </button>
+  </form> -->
+</ion-content>

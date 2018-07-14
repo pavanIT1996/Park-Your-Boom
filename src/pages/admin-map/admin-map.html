@@ -1,0 +1,38 @@
+<!--
+  Generated template for the Map page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+<ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Admin Map
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="addMarker()"><ion-icon name="add"></ion-icon>Add Marker</button>
+    </ion-buttons>  
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div #map id="map"></div>
+<ion-segment>
+  <button ion-button outline (click)="all()"><ion-icon ></ion-icon>  All   </button>
+  <button ion-button color="secondary" outline (click)="free()"><ion-icon ></ion-icon>  Free  </button>
+  <button ion-button color="danger" outline (click)="paid()"><ion-icon ></ion-icon>Paid</button>
+</ion-segment>
+  
+  <button ion-button  block (click) ="currentlocation()">currentlocation</button>
+  <button ion-button  block (click) ="reservation()">Parking Reservation</button>
+  <script>
+
+        </script>
+  
+
+</ion-content>

@@ -1,0 +1,90 @@
+<!--
+  Generated template for the SessionTimer page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Session Timer</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <!--<ion-card text-center>
+  <ion-card-header class="hscope">
+    Sesson Timer
+  </ion-card-header>
+  <ion-card-content class="scope">
+    00.00.00
+  </ion-card-content>
+  <button ion-button (click) = "starttime()"> Start</button>
+  <button ion-button (click) = "endtime()"> Stop</button>
+  <button ion-button (click) = "reset()"> Reset</button>
+
+    <ion-item>
+    <ion-label floating>Start Time </ion-label>
+    <ion-input type="text" ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>End Time </ion-label>
+    <ion-input type="text" ></ion-input>
+  </ion-item>
+
+   <ion-card-header class="hscope">
+    Cost
+  </ion-card-header>
+  <ion-card-content class="scope">
+    Rs.00.00
+  </ion-card-content>
+  <button ion-button (click) = "paymentpage()"> Ok</button>
+
+</ion-card>-->
+
+
+<ion-list>
+        <!--<ion-item text-wrap><b>First Timer (starts after two seconds): </b> {{tickFirst}}</ion-item>
+        <ion-item text-wrap><b>Second Timer (starts after three seconds): </b> {{tickSecond}}</ion-item>
+        <ion-item text-wrap><b>Third Timer (starts after four seconds): </b> {{tickThird}}</ion-item>-->
+        <ion-item text-wrap><b>Timer: </b> {{tickFourth}}</ion-item>
+    </ion-list>
+   
+    <ion-label><b>Limit Time (Default:60) </b></ion-label>
+    <ion-input type="text" #time [(ngModel)]="timeInSeconds"></ion-input>
+    <button ion-button block (click)="setTime(time.value)">Save Time</button>
+ 
+    <ion-card>
+       <ion-item text-wrap>
+           <h1 text-center *ngIf="timeInSeconds && timeInSeconds > 0">{{displayTime}}</h1>
+       </ion-item>
+        <ion-item text-wrap>
+           <h1 text-center >{{displayTime2}}</h1>
+       </ion-item>
+ 
+         <ion-fab bottom right *ngIf="runTimer && hasStarted && !hasFinished">
+            <button ion-fab (click)="pauseTimer()">
+           <ion-icon name="pause"></ion-icon>
+           </button>
+         </ion-fab>
+         <ion-fab bottom right *ngIf="!runTimer && hasStarted && !hasFinished">
+            <button ion-fab (click)="resumeTimer()">
+           <ion-icon name="play"></ion-icon>
+           </button>
+         </ion-fab>
+         <ion-fab bottom right *ngIf="!hasStarted">
+            <button ion-fab (click)="startTimer()" item-right>
+           <ion-icon name="play"></ion-icon>
+           </button>
+         </ion-fab>
+         <ion-fab bottom left *ngIf="!runTimer && (hasStarted || hasFinished) || hasFinished">
+            <button ion-fab color="danger" (click)="initTimer()" item-left>
+            <ion-icon name="refresh"></ion-icon>
+            </button>
+         </ion-fab>
+    </ion-card> 
+    <button ion-button block (click)="showUpdateSuccessAlert()">Cost</button>
+
+</ion-content>

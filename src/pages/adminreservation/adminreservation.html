@@ -1,0 +1,40 @@
+<ion-header>
+
+   <ion-navbar>
+    <ion-title>
+      Admin Reservation
+    </ion-title>
+    <ion-buttons end>
+<button ion-button icon-only (click)="addreservation()">
+    <ion-icon name="add">
+      
+    </ion-icon>
+  
+    
+  </button> 
+</ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  
+  <ion-list>
+  <ion-item *ngFor="let reservation of reservations | async " (click)="showOptions(reservation.$key, reservation.title)" >
+    
+    <!--<img class="item item-avatar" src="assets/guest-256.png"> -->
+    <input type="image" src="{{reservation.subTitle}}" width="50" height="50">
+    {{reservation.title}}
+  </ion-item>
+
+<!-- <form action="/action_page.php">
+    <ion-item >
+    <input type="image" src="assets/users.png" alt="Submit" width="50" height="50" (click) = "nextUprof()">
+    User Profile
+    </ion-item>
+    </form>-->
+
+</ion-list>
+
+</ion-content>

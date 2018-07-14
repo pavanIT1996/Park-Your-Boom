@@ -1,0 +1,20 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Reservation</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list>
+   <ion-item *ngFor="let reservation of reservations | async " (click)="presentConfirm(reservation.$key, reservation.title)" >
+    
+    <!--<img class="item item-avatar" src="assets/guest-256.png"> -->
+    <input type="image" src="{{reservation.subTitle}}" width="50" height="50">
+    {{reservation.title}}
+  </ion-item>
+  </ion-list>
+
+</ion-content>

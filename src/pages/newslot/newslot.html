@@ -1,0 +1,270 @@
+<!--
+  Generated template for the Newslot page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>New-Slot</ion-title>
+    <ion-buttons end >
+    <button end (click)="dismiss()">
+      <ion-icon name="close"></ion-icon>
+    </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+ <!--<form [formGroup]="myForm">-->
+  <form [formGroup]="form1">
+  <!--Location Details -->
+  <ion-label>{{title}}</ion-label>
+  <h4>Location Details</h4>
+  <ion-item>
+    <ion-label floating>District</ion-label>
+    <ion-select  (ionChange)="setCityValues(sDistrict)" [(ngModel)]="sDistrict" name="sDistrict" formControlName="District" 
+    [class.invalid]="!form1.controls.District.dirty">
+        <ion-option [value]="sDistrict" *ngFor="let sDistrict of Districts | async">{{sDistrict.name}}</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <p *ngIf="!form1.controls.District.dirty">Please Select a District</p>
+
+  <ion-item  *ngIf="selectedCities">
+    <ion-label floating>City</ion-label>
+    <ion-select   [(ngModel)]="sCity" name="sCity" formControlName="city"
+    [class.invalid]="!form1.controls.city.dirty">
+        <ion-option [value]="sCity" *ngFor="let sCity of selectedCities">{{sCity.name}}</ion-option>
+    </ion-select>
+  </ion-item>
+  
+   <p *ngIf="!form1.controls.city.dirty">Please Select a City</p>
+
+  <ion-item>
+    <ion-label floating>Address</ion-label>
+    <ion-input  [(ngModel)]="Address" type="text" name="Address" formControlName="address"
+    [class.invalid]="!form1.controls.address.valid && form1.controls.address.dirty">
+    </ion-input>
+  </ion-item>
+  <p *ngIf="!form1.controls.address.valid && form1.controls.address.dirty">Please Enter Valid Address</p>
+ 
+
+
+  <!--Slot Details -->
+  <h4>Slot Details</h4>
+  <ion-item>
+    <ion-label fixed>Slot Type</ion-label>
+    <ion-select [(ngModel)]="type" formControlName="type"
+    [class.invalid]="!form1.controls.type.valid && form1.controls.type.dirty">
+      <ion-option value="Free">Free</ion-option>
+      <ion-option value="Paid">Paid</ion-option>
+    </ion-select>
+  </ion-item>
+  <p *ngIf="!form1.controls.type.dirty">Please Select a Type</p>
+ 
+
+
+  <ion-item>
+    <ion-label fixed>Start Time</ion-label>
+    <ion-input [(ngModel)]="otime" type="time" formControlName="stime"
+    [class.invalid]="!form1.controls.stime.valid && form1.controls.stime.dirty"></ion-input>
+  </ion-item>
+
+  <p *ngIf="!form1.controls.stime.valid && !form1.controls.stime.dirty">Please Select the Start Time</p>
+ 
+
+  <ion-item>
+    <ion-label fixed>End Time</ion-label>
+    <ion-input [(ngModel)]="etime" type="time" formControlName="etime"
+    [class.invalid]="!form1.controls.etime.valid && form1.controls.etime.dirty"></ion-input>
+  </ion-item>
+ <p *ngIf="!form1.controls.etime.dirty">Please Select the End Time</p>
+
+
+  <ion-item>
+    <ion-label fixed>Rows</ion-label>
+    <ion-select [(ngModel)]="row" formControlName="row"
+    [class.invalid]="!form1.controls.row.dirty">
+      <ion-option>1</ion-option>
+      <ion-option>2</ion-option>
+      <ion-option>3</ion-option>
+      <ion-option>4</ion-option>
+      <ion-option>5</ion-option>
+      <ion-option>6</ion-option>
+      <ion-option>7</ion-option>
+      <ion-option>8</ion-option>
+      <ion-option>9</ion-option>
+      <ion-option>10</ion-option>
+    </ion-select>
+  </ion-item> 
+  <p *ngIf="!form1.controls.row.dirty">Please Select the Number of Rows</p>
+
+  <ion-item>
+    <ion-label fixed>Columns</ion-label>
+    <ion-select [(ngModel)]="col" formControlName="col"
+    [class.invalid]="!form1.controls.col.dirty">
+      <ion-option>1</ion-option>
+      <ion-option>2</ion-option>
+      <ion-option>3</ion-option>
+      <ion-option>4</ion-option>
+      <ion-option>5</ion-option>
+      <ion-option>6</ion-option>
+      <ion-option>7</ion-option>
+      <ion-option>8</ion-option>
+      <ion-option>9</ion-option>
+      <ion-option>10</ion-option>
+    </ion-select>
+  </ion-item>
+  <p *ngIf="!form1.controls.col.dirty">Please Select the Number of Coloumns</p>  
+
+  </form>
+  <!--Facilities -->
+  <h4>Facilities</h4>
+
+
+  <ion-item>
+  <ion-avatar item-right>
+  <img src="assets/download (7).jpg" width="65" height="65">
+  </ion-avatar>
+    <ion-label>Covered Slot</ion-label>
+    <ion-checkbox [(ngModel)]="CoverSlot"></ion-checkbox>
+  </ion-item>
+
+  <ion-item >
+  <ion-avatar item-right>
+  <img src="assets/images (5).jpg" width="65" height="65">
+  </ion-avatar>
+    <ion-label >Good Surface</ion-label>
+    <ion-checkbox [(ngModel)]="GoodSurface" ></ion-checkbox>
+  </ion-item>
+  
+  <ion-item>
+  <ion-avatar item-right>
+  <img src="assets/7d30444b22aacfd9c0433ef63ebad46f4e7b56a7.jpg" width="65" height="65">
+  </ion-avatar>
+    <ion-label>Near City</ion-label>
+    <ion-checkbox [(ngModel)]="NearCity" ></ion-checkbox>
+  </ion-item>
+ 
+  <ion-item>
+  <ion-avatar item-right>
+ <img src="assets/images (6).jpg" width="65" height="65">
+ </ion-avatar>
+    <ion-label>Security</ion-label>
+    <ion-checkbox [(ngModel)]="Security" ></ion-checkbox>
+  </ion-item>
+
+<ion-item>
+ <ion-avatar item-right>
+ <img src="assets/download (8).jpg" width="65" height="65">
+ </ion-avatar>
+    <ion-label>Fair Price</ion-label>
+    <ion-checkbox [(ngModel)]="FairPrice" ></ion-checkbox>
+  </ion-item>
+
+
+
+  <!--Rates-->
+  <div  *ngIf="type=='Paid'">  
+  <form [formGroup]="form1">
+  <h4>Rates</h4>
+  <ion-item>
+    <ion-label fixed>Period</ion-label>
+    <ion-select [(ngModel)]="period" formControlName="period"
+    [class.invalid]="!form2.controls.period.dirty">
+      <ion-option>30 Minutes</ion-option>
+      <ion-option>1 Hour</ion-option>
+      <ion-option>1 Day</ion-option>
+    </ion-select>
+  </ion-item>
+   <p *ngIf="!form2.controls.period.dirty">Please Select the Rate Period</p>  
+  </form>
+
+
+  <ion-item>
+  <ion-avatar item-right>
+  <img src="assets/motorcycle-309527_960_720.png" width="65" height="65">
+  </ion-avatar>
+    <ion-label>Bike</ion-label>
+    <ion-checkbox [(ngModel)]="Bike" ></ion-checkbox>
+  </ion-item>
+
+  <ion-item *ngIf="Bike">
+    <ion-label fixed>Price Rs.</ion-label>
+    <ion-input [(ngModel)]="Bikeprice" type="number" ></ion-input>
+  </ion-item> 
+
+
+  <ion-item>
+  <ion-avatar item-right>
+  <img src="assets/tourism.png" width="65" height="65">
+  </ion-avatar>
+    <ion-label>Tuk Tuk</ion-label>
+    <ion-checkbox [(ngModel)]="TukTuk" ></ion-checkbox>
+  </ion-item>
+
+   <ion-item *ngIf="TukTuk">
+    <ion-label fixed>Price Rs.</ion-label>
+    <ion-input [(ngModel)]="Tukprice" type="number" ></ion-input>
+  </ion-item> 
+
+
+  <ion-item>
+  <ion-avatar item-right>
+  <img src="assets/kiMb7ebKT.png" width="65" height="65">
+  </ion-avatar>
+    <ion-label>Car</ion-label>
+    <ion-checkbox [(ngModel)]="Car" ></ion-checkbox>
+  </ion-item>
+
+  <ion-item *ngIf="Car">
+     <ion-label fixed>Price Rs.</ion-label>
+    <ion-input [(ngModel)]="Carprice" type="number" ></ion-input>
+  </ion-item> 
+
+
+  <ion-item>
+  <ion-avatar item-right>
+  <img src="assets/van.png" width="65" height="65">
+  </ion-avatar>
+    <ion-label>Van</ion-label>
+    <ion-checkbox [(ngModel)]="Van" ></ion-checkbox>
+  </ion-item> 
+
+  <ion-item *ngIf="Van">
+     <ion-label fixed>Price Rs.</ion-label>
+    <ion-input [(ngModel)]="Vanprice" type="number" ></ion-input>
+  </ion-item> 
+  </div>
+
+
+
+  <!--Image -->
+  <h4>Image</h4>
+  <ion-label fixed></ion-label>
+  <img src="{{pathForImage(lastImage)}}"  style="width: 100%" [hidden]="lastImage === null">
+  <h6 [hidden]="lastImage !== null">Take Parking Slot Image</h6>
+  <ion-toolbar color="secondary">
+    <ion-buttons>
+      <button ion-button icon-left (click)="presentActionSheet()">
+        <ion-icon name="camera"></ion-icon>Select Image
+      </button>
+    </ion-buttons>
+    <ion-buttons>
+      <button ion-button icon-left (click)="uploadimage()" [disabled]="lastImage === null">
+        <ion-icon name="cloud-upload"></ion-icon>Upload
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+
+
+  <button ion-button block 
+  (click)="addContact(sDistrict,sCity,Address,type,row,col,period,Bike,Bikeprice,TukTuk,Tukprice,Car,Carprice,Van,Vanprice,otime,etime,CoverSlot,GoodSurface,NearCity,Security,FairPrice)">Submit</button>
+  <!--</form>-->
+</ion-content>

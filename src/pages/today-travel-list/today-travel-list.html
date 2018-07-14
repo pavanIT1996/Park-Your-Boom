@@ -1,0 +1,50 @@
+<!--
+  Generated template for the TodayTravelList page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Today Travel List</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <!--<ion-list radio-group>-->
+    
+  <!--ion-list-header>
+    Select one and get travel root that way you want!
+  </ion-list-header-->
+
+  <!--<ion-item>
+    <ion-label>Time</ion-label>
+    <ion-radio checked="true" value="time" ></ion-radio>-->
+
+    <!--ion-select [(ngModel)]="time" (ionChange)="showTodayTravels(time)">
+      <ion-option value="2017-05-12">2017-05-12</ion-option>
+</ion-select-->
+
+  <!--</ion-item>
+
+  <ion-item>
+    <ion-label>Distance</ion-label>
+    <ion-radio value="distance"></ion-radio>
+  </ion-item>
+  </ion-list>-->
+
+<h2 align="center">Places In Ascending</h2>
+
+<ion-list>
+  <ion-item *ngFor="let travelList of travelList | async ">
+    {{travelList.place}}
+  </ion-item>
+</ion-list>
+
+<button ion-button (click) = "viewlist()"> Navigation </button>
+  
+</ion-content>

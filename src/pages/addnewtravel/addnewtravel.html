@@ -1,0 +1,46 @@
+<!--
+  Generated template for the Addnewtravel page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Today Travels</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <!--ion-item>
+    <ion-label color="primary" stacked> </ion-label>
+    <ion-input type="place" placeholder="Place"></ion-input>
+
+    <ion-input type="time" placeholder="Time"></ion-input>
+  </ion-item>
+
+  <ion-item>
+  <ion-label>Date</ion-label>
+  <ion-datetime displayFormat="DD/MM/YYYY" min="2017" max="2030"[(ngModel)]="myDate"></ion-datetime>
+</ion-item-->
+
+<ion-list>
+  <ion-item *ngFor="let travelList of travelList | async ">
+    {{travelList.place}}
+  </ion-item>
+</ion-list>
+
+<ion-list>
+<ion-item *ngFor="let todayTravellist of todayTravellist | async " (click)="backtotravel(todayTravellist.place, todayTravellist.date, todayTravellisttodayTravellist.time)">
+
+  </ion-item>
+</ion-list>
+<div>
+<ion-select [(ngModel)]="date" (ionChange)="showTodayTravel(date)">
+      <ion-option value="2017-05-17">2017-05-17</ion-option>
+</ion-select>
+</div>
+<button ion-button round (click)="backtotravel()"> Save </button>
+</ion-content>

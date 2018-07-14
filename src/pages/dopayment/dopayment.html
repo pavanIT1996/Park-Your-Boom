@@ -1,0 +1,102 @@
+<!--
+  Generated template for the Dopayment page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+   <ion-navbar>
+    <ion-title>Do payment</ion-title>
+  </ion-navbar>  
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+  <h1 align="center"><ion-datetime displayFormat="DD-MM-YYYY" [(ngModel)]="today"></ion-datetime></h1>
+
+<form [formGroup]="form1">
+  <ion-item>
+    <ion-label floating>Cardholder's Name' </ion-label>
+    <ion-input  [(ngModel)]="name" type="text" formControlName="Name" [class.invalid]="!form1.controls.Name.valid && form1.controls.Name.dirty"></ion-input>
+  </ion-item>
+ <p *ngIf="!form1.controls.Name.valid && form1.controls.Name.dirty">Please Enter the Name</p>
+
+  <ion-item>
+    <ion-label floating>Card Type</ion-label>
+    <ion-select  floating  [(ngModel)]="Ctype" formControlName="Ctype">
+      <ion-option value="Visa">Visa</ion-option>
+      <ion-option value="MasterCard">MasterCard</ion-option>
+      <ion-option value="American Express">American Express</ion-option>
+      <ion-option value="Diners Club">Diners Club</ion-option>
+      <ion-option value="Discover">Discover</ion-option>
+      <ion-option value="JCB">JCB</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <div  *ngIf="Ctype=='Visa'">  
+  <ion-item>
+    <ion-label floating>Card Number</ion-label>
+    <ion-input type="text" [(ngModel)]="CNum" formControlName="CNum" [class.invalid]="!form1.controls.CNum.valid && form1.controls.CNum.dirty"></ion-input>
+  </ion-item>
+   <p *ngIf="!form1.controls.CNum.valid && form1.controls.CNum.dirty">Please Enter the Valid VisaCard Number</p>
+  </div>
+  <div  *ngIf="Ctype=='MasterCard'">  
+  <ion-item>
+    <ion-label floating>Card Number</ion-label>
+    <ion-input type="text" [(ngModel)]="CNum" formControlName="CNum2" [class.invalid]="!form1.controls.CNum.valid && form1.controls.CNum.dirty"></ion-input>
+  </ion-item>
+   <p *ngIf="!form1.controls.CNum2.valid && form1.controls.CNum2.dirty">Please Enter the Valid MasterCard Number</p>
+  </div>
+   <div  *ngIf="Ctype=='American Express'">  
+  <ion-item>
+    <ion-label floating>Card Number</ion-label>
+    <ion-input type="text" [(ngModel)]="CNum" formControlName="CNum3" [class.invalid]="!form1.controls.CNum.valid && form1.controls.CNum.dirty"></ion-input>
+  </ion-item>
+   <p *ngIf="!form1.controls.CNum3.valid && form1.controls.CNum3.dirty">Please Enter the Valid American Express Number</p>
+  </div>
+    <div  *ngIf="Ctype=='Diners Club'">  
+  <ion-item>
+    <ion-label floating>Card Number</ion-label>
+    <ion-input type="text" [(ngModel)]="CNum" formControlName="CNum4" [class.invalid]="!form1.controls.CNum.valid && form1.controls.CNum.dirty"></ion-input>
+  </ion-item>
+   <p *ngIf="!form1.controls.CNum4.valid && form1.controls.CNum4.dirty">Please Enter the Valid Diners Club Number</p>
+  </div>
+     <div  *ngIf="Ctype=='Discover'">  
+  <ion-item>
+    <ion-label floating>Card Number</ion-label>
+    <ion-input type="text" [(ngModel)]="CNum" formControlName="CNum5" [class.invalid]="!form1.controls.CNum.valid && form1.controls.CNum.dirty"></ion-input>
+  </ion-item>
+   <p *ngIf="!form1.controls.CNum5.valid && form1.controls.CNum5.dirty">Please Enter the Valid Discover Number</p>
+  </div>
+    <div  *ngIf="Ctype=='JCB'">  
+  <ion-item>
+    <ion-label floating>Card Number</ion-label>
+    <ion-input type="text" [(ngModel)]="CNum" formControlName="CNum6" [class.invalid]="!form1.controls.CNum.valid && form1.controls.CNum.dirty"></ion-input>
+  </ion-item>
+   <p *ngIf="!form1.controls.CNum6.valid && form1.controls.CNum6.dirty">Please Enter the Valid JCB Number</p>
+  </div>
+
+
+
+   <ion-item>
+    <ion-label fixed>Expiry Date</ion-label>
+    <ion-input type="date" [(ngModel)]="Edate" formControlName="EDate" [class.invalid]="!form1.controls.EDate.valid && form1.controls.EDate.dirty"></ion-input>
+  </ion-item>
+ <p *ngIf="!form1.controls.EDate.valid && form1.controls.EDate.dirty">Please Enter Expiry Date</p>
+    <ion-item>
+    <ion-label floating>CVV (last 3 digits of the back) </ion-label>
+    <ion-input type="password" formControlName="PWD" [class.invalid]="!form1.controls.PWD.valid && form1.controls.PWD.dirty"></ion-input>
+  </ion-item>
+ <p *ngIf="!form1.controls.PWD.valid && form1.controls.PWD.dirty">Please Enter the Password</p>
+
+  <button ion-button block (click) ="addContact(Ctype,CNum,Edate,name,today)"> Done </button>
+ </form>
+
+
+
+</ion-list>
+
+</ion-content>
